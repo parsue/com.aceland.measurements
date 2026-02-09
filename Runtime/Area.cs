@@ -53,5 +53,9 @@
         
         public static Area operator +(Area a, Area b) => new(a.squareMeters + b.squareMeters);
         public static Area operator -(Area a, Area b) => new(a.squareMeters - b.squareMeters);
+        
+        // Area * Length = Volume
+        public static Volume operator *(Area area, Length length) => 
+            new Volume(area.squareMeters * length.Meters);
     }
 }

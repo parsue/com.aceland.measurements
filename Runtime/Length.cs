@@ -43,5 +43,9 @@
         // Area operator remains unchanged
         public static Area operator *(Length width, Length breadth) =>
             (width.meters * breadth.meters).SquareMeters();
+        
+        // Length * Area = Volume
+        public static Volume operator *(Length length, Area area) => 
+            new Volume(length.meters * area.SquareMeters);
     }
 }

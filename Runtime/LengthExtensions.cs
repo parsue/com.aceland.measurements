@@ -1,4 +1,6 @@
-﻿namespace AceLand.Measurements
+﻿using AceLand.Measurements.Calculators;
+
+namespace AceLand.Measurements
 {
     public static class LengthExtensions
     {
@@ -29,5 +31,11 @@
         public static Length Yards(this int value) => new(value * 0.9144);
         public static Length Miles(this int value) => new(value * 1_609.344);
         public static Length NauticalMiles(this int value) => new(value * 1_852.0);
+
+        // Hydrostatics Calculations
+        public static Pressure FromFreshWaterDepth(this Length freshWaterDepth) =>
+            Hydrostatics.FromFreshWaterDepth(freshWaterDepth.Meters);
+        public static Pressure FromSaltWaterDepth(this Length saltWaterDepth) =>
+            Hydrostatics.FromSaltWaterDepth(saltWaterDepth.Meters);
     }
 }
