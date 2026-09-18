@@ -3,14 +3,14 @@
     public readonly struct Temperature
     {
         // Internal storage in Celsius (Most common middle-ground)
-        internal Temperature(double celsius) => this.celsius = celsius;
-        private readonly double celsius;
+        internal Temperature(float celsius) => this._celsius = celsius;
+        private readonly float _celsius;
 
-        public override string ToString() => $"{celsius} °C";
+        public override string ToString() => $"{_celsius} °C";
 
         // Scales
-        public double Celsius => celsius;
-        public double Fahrenheit => (celsius * 9.0 / 5.0) + 32.0;
-        public double Kelvin => celsius + 273.15;
+        public float Celsius => _celsius;
+        public float Fahrenheit => (_celsius * 9f / 5f) + 32f;
+        public float Kelvin => _celsius + 273.15f;
     }
 }

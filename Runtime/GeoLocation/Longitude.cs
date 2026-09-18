@@ -1,4 +1,6 @@
-﻿namespace AceLand.Measurements.GeoLocation
+﻿using Unity.Mathematics;
+
+namespace AceLand.Measurements.GeoLocation
 {
     public readonly struct Longitude
     {
@@ -23,6 +25,6 @@
         private readonly double degrees;
         
         public double Value => degrees;
-        public override string ToString() => $"{System.Math.Abs(degrees)}° {(degrees >=0 ? "E": "W")}";
+        public override string ToString() => $"{math.abs(degrees)}° {(degrees >=0 ? "E": "W")}";
     }
 }

@@ -1,34 +1,34 @@
-﻿using System;
+﻿using Unity.Mathematics;
 
 namespace AceLand.Measurements
 {
     public readonly struct Frequency
     {
         // Internal storage in Hertz
-        internal Frequency(double hertz) => this.hertz = hertz;
-        private readonly double hertz;
+        internal Frequency(float hertz) => _hertz = hertz;
+        private readonly float _hertz;
 
-        public override string ToString() => $"{hertz} Hz";
+        public override string ToString() => $"{_hertz} Hz";
 
         // --- Standard SI ---
-        public double Hertz => hertz;
+        public float Hertz => _hertz;
 
         // --- Metric Prefixes ---
-        public double Kilohertz => hertz / 1_000.0;       // Audio / Radio
-        public double Megahertz => hertz / 1_000_000.0;   // FM Radio / CPU
-        public double Gigahertz => hertz / 1_000_000_000.0; // WiFi / CPU
-        public double Terahertz => hertz / 1_000_000_000_000.0; // Light / Infrared
+        public float Kilohertz => _hertz / 1_000f;       // Audio / Radio
+        public float Megahertz => _hertz / 1_000_000f;   // FM Radio / CPU
+        public float Gigahertz => _hertz / 1_000_000_000f; // WiFi / CPU
+        public float Terahertz => _hertz / 1_000_000_000_000f; // Light / Infrared
 
         // --- Mechanical ---
         // 1 Hz = 60 RPM (Revolutions Per Minute)
-        public double RPM => hertz * 60.0;
+        public float RPM => _hertz * 60f;
 
         // --- Physics / Engineering (Angular Frequency) ---
         // Used in electronics and rotational physics
         // Radians/sec = 2 * PI * Hz
-        public double RadiansPerSecond => hertz * 2.0 * Math.PI;
+        public float RadiansPerSecond => _hertz * 2f * math.PI;
 
-        public static Frequency operator +(Frequency a, Frequency b) => new(a.hertz + b.hertz);
-        public static Frequency operator -(Frequency a, Frequency b) => new(a.hertz - b.hertz);
+        public static Frequency operator +(Frequency a, Frequency b) => new(a._hertz + b._hertz);
+        public static Frequency operator -(Frequency a, Frequency b) => new(a._hertz - b._hertz);
     }
 }

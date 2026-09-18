@@ -3,46 +3,46 @@
     public readonly struct DataVolume
     {
         // Internal storage in Bytes
-        internal DataVolume(double bytes) => this.bytes = bytes;
-        private readonly double bytes;
+        internal DataVolume(float bytes) => this._bytes = bytes;
+        private readonly float _bytes;
 
-        public override string ToString() => $"{bytes} B";
+        public override string ToString() => $"{_bytes} B";
 
         // Base Unit
-        public double Bytes => bytes;
+        public float Bytes => _bytes;
         
         // Bits (1 Byte = 8 Bits)
-        public double Bits => bytes * 8.0;
-        public double Kilobits => Bits / 1_000.0;
-        public double Megabits => Bits / 1_000_000.0;
-        public double Gigabit => Bits / 1_000_000_000.0;
+        public float Bits => _bytes * 8f;
+        public float Kilobits => Bits / 1_000f;
+        public float Megabits => Bits / 1_000_000f;
+        public float Gigabit => Bits / 1_000_000_000f;
 
         // ---------------------------------------------------------
         // Decimal / SI Standards (Powers of 10)
         // Used by: Hard Drive manufacturers, Network speeds, macOS
         // ---------------------------------------------------------
-        public double Kilobytes => bytes / 1_000.0;             // 1 kB = 1,000 B
-        public double Megabytes => bytes / 1_000_000.0;         // 1 MB = 1,000,000 B
-        public double Gigabytes => bytes / 1_000_000_000.0;     // 1 GB = 10^9 B
-        public double Terabytes => bytes / 1_000_000_000_000.0; // 1 TB = 10^12 B
-        public double Petabytes => bytes / 1_000_000_000_000_000.0;
+        public float Kilobytes => _bytes / 1_000f;             // 1 kB = 1,000 B
+        public float Megabytes => _bytes / 1_000_000f;         // 1 MB = 1,000,000 B
+        public float Gigabytes => _bytes / 1_000_000_000f;     // 1 GB = 10^9 B
+        public float Terabytes => _bytes / 1_000_000_000_000f; // 1 TB = 10^12 B
+        public float Petabytes => _bytes / 1_000_000_000_000_000f;
 
         // ---------------------------------------------------------
         // Binary / IEC Standards (Powers of 2)
         // Used by: RAM, Windows File Explorer
         // ---------------------------------------------------------
-        private const double BYTES_PER_KIB = 1024.0;
-        private const double BYTES_PER_MIB = 1024.0 * 1024.0;                   // 1,048,576
-        private const double BYTES_PER_GIB = 1024.0 * 1024.0 * 1024.0;          // 1,073,741,824
-        private const double BYTES_PER_TIB = 1024.0 * 1024.0 * 1024.0 * 1024.0; // 1,099,511,627,776
+        private const float BYTES_PER_KIB = 1024f;
+        private const float BYTES_PER_MIB = 1024f * 1024f;                   // 1,048,576
+        private const float BYTES_PER_GIB = 1024f * 1024f * 1024f;          // 1,073,741,824
+        private const float BYTES_PER_TIB = 1024f * 1024f * 1024f * 1024f; // 1,099,511,627,776
 
-        public double Kibibytes => bytes / BYTES_PER_KIB; // 1 KiB = 1024 B
-        public double Mebibytes => bytes / BYTES_PER_MIB; // 1 MiB = 1024 KiB
-        public double Gibibytes => bytes / BYTES_PER_GIB; // 1 GiB = 1024 MiB
-        public double Tebibytes => bytes / BYTES_PER_TIB; // 1 TiB = 1024 GiB
+        public float Kibibytes => _bytes / BYTES_PER_KIB; // 1 KiB = 1024 B
+        public float Mebibytes => _bytes / BYTES_PER_MIB; // 1 MiB = 1024 KiB
+        public float Gibibytes => _bytes / BYTES_PER_GIB; // 1 GiB = 1024 MiB
+        public float Tebibytes => _bytes / BYTES_PER_TIB; // 1 TiB = 1024 GiB
 
         // Operators
-        public static DataVolume operator +(DataVolume a, DataVolume b) => new(a.bytes + b.bytes);
-        public static DataVolume operator -(DataVolume a, DataVolume b) => new(a.bytes - b.bytes);
+        public static DataVolume operator +(DataVolume a, DataVolume b) => new(a._bytes + b._bytes);
+        public static DataVolume operator -(DataVolume a, DataVolume b) => new(a._bytes - b._bytes);
     }
 }

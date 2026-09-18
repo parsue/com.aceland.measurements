@@ -3,50 +3,50 @@
     public readonly struct Volume
     {
         // Internal storage in Cubic Meters
-        internal Volume(double cubicMeters) => this.cubicMeters = cubicMeters;
-        private readonly double cubicMeters;
+        internal Volume(float cubicMeters) => this._cubicMeters = cubicMeters;
+        private readonly float _cubicMeters;
 
-        public override string ToString() => $"{cubicMeters} m³";
+        public override string ToString() => $"{_cubicMeters} m³";
 
         // --- SI Cubic Units ---
-        public double CubicMeters => cubicMeters;
-        public double CubicKilometers => cubicMeters / 1_000_000_000.0;
-        public double CubicCentimeters => cubicMeters * 1_000_000.0; // Same as Milliliter
-        public double CubicMillimeters => cubicMeters * 1_000_000_000.0;
+        public float CubicMeters => _cubicMeters;
+        public float CubicKilometers => _cubicMeters / 1_000_000_000f;
+        public float CubicCentimeters => _cubicMeters * 1_000_000f; // Same as Milliliter
+        public float CubicMillimeters => _cubicMeters * 1_000_000_000f;
 
         // --- SI Liquid Units ---
         // 1 Liter = 0.001 cubic meters (1 cubic decimeter)
-        public double Liters => cubicMeters * 1_000.0;
-        public double Milliliters => cubicMeters * 1_000_000.0;
+        public float Liters => _cubicMeters * 1_000f;
+        public float Milliliters => _cubicMeters * 1_000_000f;
 
         // --- Imperial / US Cubic Units ---
         // Based on 1 inch = 0.0254 m
-        private const double METER_PER_INCH = 0.0254;
-        private const double METER_PER_FOOT = 0.3048;
-        private const double METER_PER_YARD = 0.9144;
+        private const float METER_PER_INCH = 0.0254f;
+        private const float METER_PER_FOOT = 0.3048f;
+        private const float METER_PER_YARD = 0.9144f;
 
-        private const double CUBIC_METER_PER_CUBIC_INCH = METER_PER_INCH * METER_PER_INCH * METER_PER_INCH; // ~0.000016387
-        private const double CUBIC_METER_PER_CUBIC_FOOT = METER_PER_FOOT * METER_PER_FOOT * METER_PER_FOOT; // ~0.0283168
-        private const double CUBIC_METER_PER_CUBIC_YARD = METER_PER_YARD * METER_PER_YARD * METER_PER_YARD; // ~0.76455
+        private const float CUBIC_METER_PER_CUBIC_INCH = METER_PER_INCH * METER_PER_INCH * METER_PER_INCH; // ~0.000016387
+        private const float CUBIC_METER_PER_CUBIC_FOOT = METER_PER_FOOT * METER_PER_FOOT * METER_PER_FOOT; // ~0.0283168
+        private const float CUBIC_METER_PER_CUBIC_YARD = METER_PER_YARD * METER_PER_YARD * METER_PER_YARD; // ~0.76455
 
-        public double CubicInches => cubicMeters / CUBIC_METER_PER_CUBIC_INCH;
-        public double CubicFeet => cubicMeters / CUBIC_METER_PER_CUBIC_FOOT;
-        public double CubicYards => cubicMeters / CUBIC_METER_PER_CUBIC_YARD;
+        public float CubicInches => _cubicMeters / CUBIC_METER_PER_CUBIC_INCH;
+        public float CubicFeet => _cubicMeters / CUBIC_METER_PER_CUBIC_FOOT;
+        public float CubicYards => _cubicMeters / CUBIC_METER_PER_CUBIC_YARD;
 
         // --- US Liquid Units ---
         // 1 US Gallon = 231 cubic inches (exact definition)
-        private const double CUBIC_INCHES_PER_GALLON = 231.0;
-        private const double CUBIC_METER_PER_GALLON = CUBIC_INCHES_PER_GALLON * CUBIC_METER_PER_CUBIC_INCH;
+        private const float CUBIC_INCHES_PER_GALLON = 231f;
+        private const float CUBIC_METER_PER_GALLON = CUBIC_INCHES_PER_GALLON * CUBIC_METER_PER_CUBIC_INCH;
 
-        public double USGallons => cubicMeters / CUBIC_METER_PER_GALLON;
+        public float USGallons => _cubicMeters / CUBIC_METER_PER_GALLON;
         
         // 1 Gallon = 4 Quarts = 8 Pints = 128 Fluid Ounces
-        public double USQuarts => USGallons * 4.0;
-        public double USPints => USGallons * 8.0;
-        public double USFluidOunces => USGallons * 128.0;
+        public float USQuarts => USGallons * 4f;
+        public float USPints => USGallons * 8f;
+        public float USFluidOunces => USGallons * 128f;
 
         // --- Math Operators ---
-        public static Volume operator +(Volume a, Volume b) => new(a.cubicMeters + b.cubicMeters);
-        public static Volume operator -(Volume a, Volume b) => new(a.cubicMeters - b.cubicMeters);
+        public static Volume operator +(Volume a, Volume b) => new(a._cubicMeters + b._cubicMeters);
+        public static Volume operator -(Volume a, Volume b) => new(a._cubicMeters - b._cubicMeters);
     }
 }

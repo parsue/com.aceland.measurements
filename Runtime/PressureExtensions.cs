@@ -3,14 +3,14 @@
     public static class PressureExtensions
     {
         // Standard
-        public static Pressure Pascals(this double value) => new(value);
-        public static Pressure Kilopascals(this double value) => new(value * 1_000.0);
-        public static Pressure Bars(this double value) => new(value * 100_000.0);
-        public static Pressure PSI(this double value) => new(value * 6_894.757293168);
-        public static Pressure Atmospheres(this double value) => new(value * 101_325.0);
+        public static Pressure Pascals(this float value) => new(value);
+        public static Pressure Kilopascals(this float value) => new(value * 1_000f);
+        public static Pressure Bars(this float value) => new(value * 100_000f);
+        public static Pressure PSI(this float value) => new(value * 6_894.757293168f);
+        public static Pressure Atmospheres(this float value) => new(value * 101_325f);
 
         // Water / Hydraulic
-        public static Pressure MetersOfWater(this double value) => new(value * 9_806.65);
-        public static Pressure FeetOfHead(this double value) => new(value * 2_989.0669);
+        public static Pressure MetersOfWater(this float value) => new(value * 9_806.65f);
+        public static Pressure FeetOfHead(this float value) => new(value * 2_989.0669f);
     }
 }

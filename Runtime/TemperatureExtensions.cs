@@ -2,12 +2,12 @@
 {
     public static class TemperatureExtensions
     {
-        public static Temperature Celsius(this double value) => new(value);
+        public static Temperature Celsius(this float value) => new(value);
         
-        public static Temperature Fahrenheit(this double value) 
-            => new((value - 32.0) * 5.0 / 9.0);
+        public static Temperature Fahrenheit(this float value) 
+            => new((value - 32f) * 5f / 9f);
             
-        public static Temperature Kelvin(this double value) 
-            => new(value - 273.15);
+        public static Temperature Kelvin(this float value) 
+            => new(value - 273.15f);
     }
 }

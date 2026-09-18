@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [3.0.0] - 2026-8-28
+### Modified
+- burst ready implement
+
 ## [1.0.2] - 2026-02-09
 ### Added
 - [Temperature] new struct for temperature units
